@@ -12,16 +12,19 @@ YRANGE = (20, 768-20)
 def addLines():
     canvas = Player.getElementByID("canvas")
     for i in xrange(200):
+#        line = Player.createNode("line",
+#                {"x1":0, "y1":10, "x2":10, "y2":10,
+#                 "strokewidth": 1})
         line = Player.createNode("line", 
                 {"x1":randrange(XRANGE[0], XRANGE[1]), 
                  "y1":randrange(YRANGE[0], YRANGE[1]),
                  "x2":randrange(XRANGE[0], XRANGE[1]), 
                  "y2":randrange(YRANGE[0], YRANGE[1]),
-                 "width":randrange(1,5)})
+                 "strokewidth":randrange(1,5)})
         canvas.appendChild(line)
     print canvas.getNumChildren()
-    if canvas.getNumChildren() > 20000:
-        Player.stop()
+#    if canvas.getNumChildren() > 20000:
+#        Player.stop()
 
 Player = avg.Player()
 Log = avg.Logger.get()
@@ -43,7 +46,7 @@ Player.loadString("""
     </avg>
 """)
 Player.setOnFrameHandler(addLines)
-Player.setFramerate(60)
+Player.setFramerate(1000)
 Player.play()
 
 
