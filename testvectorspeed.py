@@ -20,11 +20,13 @@ def addLines():
                  "y1":randrange(YRANGE[0], YRANGE[1]),
                  "x2":randrange(XRANGE[0], XRANGE[1]), 
                  "y2":randrange(YRANGE[0], YRANGE[1]),
+                 "texhref":"rgb24-64x64.png",
                  "strokewidth":randrange(1,5)})
         canvas.appendChild(line)
     print canvas.getNumChildren()
-#    if canvas.getNumChildren() > 20000:
-#        Player.stop()
+    if canvas.getNumChildren() > 2000:
+        for i in xrange(200):
+            canvas.removeChild(0)
 
 Player = avg.Player()
 Log = avg.Logger.get()
@@ -42,7 +44,7 @@ Player.loadString("""
     <?xml version="1.0"?>
     <!DOCTYPE avg SYSTEM "../../doc/avg.dtd">
     <avg width="1024" height="768">
-      <canvas id="canvas" width="1024" height="768"/>
+      <div id="canvas" width="1024" height="768"/>
     </avg>
 """)
 Player.setOnFrameHandler(addLines)
